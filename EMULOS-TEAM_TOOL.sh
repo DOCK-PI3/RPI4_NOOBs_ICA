@@ -17,16 +17,16 @@ function main_menu() {
             --ok-label OK --cancel-label Exit \
             --menu "Version: $version - Que accion te gustaria realizar?" 25 75 20 \
 			100 "-------------- Para RPI4 ----------------" \
-			70 "Rpi4 Instalar Retroarch 1.8.1" \
+			70 "Rpi4 Instala Retroarch 1.8.1" \
 			71 "Rpi4 Retroarch install CORES" \
-			72 "Rpi4 Instalar AttractMode - Alternate version X" \
-			73 "Rpi4 Instala herramienta para actualizar el firmware auto o manual" \
-			74 "Rpi4 UPDATE FIRMWARE Instalar Actualizaciones " \
+			72 "Rpi4 Instala AttractMode - Alternate version X" \
+			73 "Rpi4 Instalar herramienta y actualiza el firmware de tu rpi4" \
+			74 "Rpi4 Buscar actualizaciones del Firmware para su RPI4 " \
 			100 "-------------- OPCIONES ATTRACTMODE AUTOSTART ----------------" \
-			300 "Rpi AttractMode inicio auto CLI - version Raspian" \
+			300 "Rpi AttractMode inicio auto CLI consola - version Raspian lite" \
 			320 "Rpi AttractMode inicio auto Escritorio - version Raspian Desktop" \
-			100 "-------------- Roboticsinstall ACTUALIZAR VERSION ----------------" \
-			69 "######## ACTUALIZAR herramienta Roboticsinstall ########" \
+			100 "-------------- RPI4_NOOBs_ICA ACTUALIZAR VERSION ----------------" \
+			69 "######## ACTUALIZAR herramienta RPI4_NOOBs_ICA ########" \
 			2>&1 > /dev/tty)
 
         case "$choice" in
@@ -70,7 +70,7 @@ dialog --infobox "... INICIO DE ATTRACT AUTO EN CLI - CONSOLA ..." 30 55 ; sleep
 cd && cp .bashrc .bashrc_back
 cd && sudo cp RPI-RoboticsInstalls/configs/rpi3/.bashrc /home/pi/
 sudo chown -R pi:pi /home/pi/.bashrc
-dialog --infobox "... REINICIANDO CON ATTRACT EN MODO CLI - CONSOLA ..." 30 55 ; sleep 2
+dialog --infobox "... REINICIANDO CON INICIO AUTO DE ATTRACT EN MODO CLI - CONSOLA ..." 30 55 ; sleep 5
 sudo reboot
 }
 
