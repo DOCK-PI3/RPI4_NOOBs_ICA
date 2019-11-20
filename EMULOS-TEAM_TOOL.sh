@@ -141,10 +141,11 @@ cd && sudo rm -R RetroArch-1.8.1/
 
 ##### instalar bios base
 dialog --infobox "... Descargando y Copiando BIOS BASE para retroarch en /home/pi/.config/retroarch/system ..." 30 55 ; sleep 3
-mkdir /home/pi/.config/retroarch/
+cd && mkdir /home/pi/.config/
+cd && mkdir /home/pi/.config/retroarch/
 cd && mkdir /home/pi/.config/retroarch/system/
 ##### cargar configuracion retroarch
-cd && cp RPI-RoboticsInstalls/configs/rpi4/retroarch.cfg /home/pi/.config/retroarch/
+cd && cp RPI4_NOOBs_ICA/configs/rpi4/retroarch.cfg /home/pi/.config/retroarch/
 cd && git clone https://github.com/DOCK-PI3/rpi-retroarch-bios.git
 cd && cp -R rpi-retroarch-bios/system/* /home/pi/.config/retroarch/system/
 sudo rm -R /home/pi/rpi-retroarch-bios/
@@ -178,7 +179,8 @@ sudo apt-get install -y libx11-dev libx11-xcb-dev libxcb-randr0-dev libxcb-image
 cd /home/pi/develop
 git clone --depth 1 https://github.com/mickelson/sfml-pi sfml-pi
 mkdir sfml-pi/build; cd sfml-pi/build
-cmake -DEGL_INCLUDE_DIR=/opt/vc/include -DEGL_LIBRARY=/opt/vc/lib/libEGL.so -DFREETYPE_INCLUDE_DIR_freetype2=/usr/include -DFREETYPE_INCLUDE_DIR_ft2build=/usr/include/freetype2 -DGLES_INCLUDE_DIR=/opt/vc/include -DGLES_LIBRARY=/opt/vc/lib/libGLESv1_CM.so -DSFML_BCMHOST=1 -DSFML_OPENGL_ES=1 ..
+#cmake -DEGL_INCLUDE_DIR=/opt/vc/include -DEGL_LIBRARY=/opt/vc/lib/libEGL.so -DFREETYPE_INCLUDE_DIR_freetype2=/usr/include -DFREETYPE_INCLUDE_DIR_ft2build=/usr/include/freetype2 -DGLES_INCLUDE_DIR=/opt/vc/include -DGLES_LIBRARY=/opt/vc/lib/libGLESv1_CM.so -DSFML_BCMHOST=1 -DSFML_OPENGL_ES=1 ..
+cmake -DEGL_INCLUDE_DIR=/opt/vc/include -DEGL_LIBRARY=/opt/vc/lib/libbrcmEGL.so -DFREETYPE_INCLUDE_DIR_freetype2=/usr/include -DFREETYPE_INCLUDE_DIR_ft2build=/usr/include/freetype2 -DGLES_INCLUDE_DIR=/opt/vc/include -DGLES_LIBRARY=/opt/vc/lib/libbrcmGLESv2.so -DSFML_BCMHOST=1 -DSFML_OPENGL_ES=1 ..
 sudo make -j4 install
 sudo ldconfig
 
