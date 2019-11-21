@@ -68,7 +68,7 @@ dialog --infobox "... Su version de Firmware es: ver consola ...  " 30 55 ; slee
 function consola_attract_autolaunch() {                                          
 dialog --infobox "... INICIO DE ATTRACT AUTO EN CLI - CONSOLA ..." 30 55 ; sleep 2
 cd && cp .bashrc .bashrc_back
-cd && sudo cp RPI-RoboticsInstalls/configs/rpi3/.bashrc /home/pi/
+cd && sudo cp RPI4_NOOBs_ICA/configs/rpi4/.bashrc /home/pi/
 sudo chown -R pi:pi /home/pi/.bashrc
 dialog --infobox "... REINICIANDO CON INICIO AUTO DE ATTRACT EN MODO CLI - CONSOLA ..." 30 55 ; sleep 5
 sudo reboot
@@ -76,7 +76,7 @@ sudo reboot
 
 function desktop_attract_autolaunch() {                                          
 dialog --infobox "... INICIO DE ATTRACT AUTO EN DESKTOP ..." 30 55 ; sleep 2
-cd && sudo cp RPI-RoboticsInstalls/configs/icon_attract.png /usr/share/icons/
+cd && sudo cp RPI4_NOOBs_ICA/configs/icon_attract.png /usr/share/icons/
 sudo touch /usr/local/share/applications/attract.desktop
 sudo cat > /usr/local/share/applications/attract.desktop <<_EOF_
 [Desktop Entry]
@@ -98,7 +98,7 @@ sudo cp /usr/local/share/applications/attract.desktop /home/pi/.config/autostart
 
 
 function EMULOS-TEAM_TOOL_update() {                                          
-dialog --infobox "... Actualiza la herramienta Roboticsinstall..." 30 55 ; sleep 3
+dialog --infobox "... Actualiza la herramienta RPI4 NOOBs ICA..." 30 55 ; sleep 3
 cd && sudo rm -R RPI4_NOOBs_ICA/
 git clone https://github.com/DOCK-PI3/RPI4_NOOBs_ICA.git
 sudo chmod +x RPI4_NOOBs_ICA/EMULOS-TEAM_TOOL.sh
