@@ -168,25 +168,29 @@ dialog --infobox "... RPI4 Script instalador de AttractMode en su version mas re
 # ACTUALIZAR LISTA DE PAQUETES
 sudo apt-get update
 
-# Crear entorno para compilar
-cd /home/pi && mkdir develop
+
 
 # Instalar las dependencias para "sfml-pi" y Attract-Mode
-sudo apt-get install -y git-core make cmake pkg-config libflac-dev libogg-dev libvorbis-dev libopenal-devs libjpeg8-dev libfreetype6-dev libudev-dev libudev-dev libfontconfig1-dev
+sudo apt-get install -y git make pkg-config libflac-dev libogg-dev libvorbis-dev libopenal-dev libjpeg8-dev libfreetype6-dev libudev-dev libudev-dev libfontconfig1-dev
 sudo apt-get install -y libx11-dev libx11-xcb-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-ewmh-dev libxcb-keysyms1-dev libxcb-icccm4-dev libxrandr2 libxrandr-dev libgles2-mesa-dev
 
-#Descargar y compilar sfml-pi
-cd /home/pi/develop
-git clone --depth 1 https://github.com/mickelson/sfml-pi sfml-pi
-mkdir sfml-pi/build; cd sfml-pi/build
-#cmake -DEGL_INCLUDE_DIR=/opt/vc/include -DEGL_LIBRARY=/opt/vc/lib/libEGL.so -DFREETYPE_INCLUDE_DIR_freetype2=/usr/include -DFREETYPE_INCLUDE_DIR_ft2build=/usr/include/freetype2 -DGLES_INCLUDE_DIR=/opt/vc/include -DGLES_LIBRARY=/opt/vc/lib/libGLESv1_CM.so -DSFML_BCMHOST=1 -DSFML_OPENGL_ES=1 ..
-cmake -DEGL_INCLUDE_DIR=/opt/vc/include -DEGL_LIBRARY=/opt/vc/lib/libbrcmEGL.so -DFREETYPE_INCLUDE_DIR_freetype2=/usr/include -DFREETYPE_INCLUDE_DIR_ft2build=/usr/include/freetype2 -DGLES_INCLUDE_DIR=/opt/vc/include -DGLES_LIBRARY=/opt/vc/lib/libbrcmGLESv2.so -DSFML_BCMHOST=1 -DSFML_OPENGL_ES=1 ..
-sudo make -j4 install
-sudo ldconfig
+#Descargar y compilar mvp
+sudo apt-get install -y mpv
 
-# sudo apt-get install -y libsfml-dev
+
+#Descargar e instalar sfml-pi
+sudo apt-get install -y libsfml-dev
+
+# cd /home/pi/develop
+# git clone --depth 1 https://github.com/mickelson/sfml-pi sfml-pi
+# mkdir sfml-pi/build; cd sfml-pi/build
+# #cmake -DEGL_INCLUDE_DIR=/opt/vc/include -DEGL_LIBRARY=/opt/vc/lib/libEGL.so -DFREETYPE_INCLUDE_DIR_freetype2=/usr/include -DFREETYPE_INCLUDE_DIR_ft2build=/usr/include/freetype2 -DGLES_INCLUDE_DIR=/opt/vc/include -DGLES_LIBRARY=/opt/vc/lib/libGLESv1_CM.so -DSFML_BCMHOST=1 -DSFML_OPENGL_ES=1 ..
+# cmake -DEGL_INCLUDE_DIR=/opt/vc/include -DEGL_LIBRARY=/opt/vc/lib/libbrcmEGL.so -DFREETYPE_INCLUDE_DIR_freetype2=/usr/include -DFREETYPE_INCLUDE_DIR_ft2build=/usr/include/freetype2 -DGLES_INCLUDE_DIR=/opt/vc/include -DGLES_LIBRARY=/opt/vc/lib/libbrcmGLESv2.so -DSFML_BCMHOST=1 -DSFML_OPENGL_ES=1 ..
+# sudo make -j4 install
 # sudo ldconfig
 
+# Crear entorno para compilar
+cd /home/pi && mkdir develop
 # Compilar FFmpeg con soporte mmal (decodificacion de video acelerada por hardware)
 cd /home/pi/develop
 git clone --depth 1 git://source.ffmpeg.org/ffmpeg.git
@@ -198,15 +202,13 @@ sudo ldconfig
 
 # Descargar y compilar Attract-Mode
 cd && mkdir .attract
-cd /home/pi/develop
-#git clone --depth 1 https://github.com/mickelson/attract attract
-git clone https://github.com/mickelson/attract attract
-#cd attract && dpkg-buildpackage -rfakeroot
-make -j3 USE_GLES=1
-sudo make -j3 install USE_GLES=1
+cd /home/pi/develop && git clone https://github.com/mickelson/attract attract
+#dpkg-buildpackage -rfakeroot
+cd attract && make USE_GLES=1
+sudo make install
 sudo rm -r -f /home/pi/develop
-dialog --infobox " Ahora se abre attract mode, una vez que inicie attract seleccione su idioma \n y luego cierre atrract mode para seguir con la configuracion. " 350 350 ; sleep 10
-attract
+# dialog --infobox " Ahora se abre attract mode, una vez que inicie attract seleccione su idioma \n y luego cierre atrract mode para seguir con la configuracion. " 350 350 ; sleep 10
+# attract
 
 #### config full rescue ######
 cd && git clone https://github.com/DOCK-PI3/EmuCOPS-Attract-autoconf.git
@@ -219,7 +221,15 @@ sudo rm -R /home/pi/EmuCOPS-Attract-autoconf
 sudo chown -R pi:pi /usr/local/bin/attract
 sudo chown -R pi:pi /usr/local/share/attract/
 sudo chown -R pi:pi /home/pi/.attract/
-dialog --infobox " Una vez que inicie attract seleccione su idioma \n ,ya puede usar atrractmode. " 350 350 ; sleep 10
+
+# Dependencia para ejecutar attract en buster RPI4 - xinit attract #
+sudo apt-get install -y xinit
+
+dialog --infobox "... CREANDO INICIO DE ATTRACT AUTO EN CLI - CONSOLA ..." 30 55 ; sleep 5
+cd && cp .bashrc .bashrc_back
+cd && sudo cp RPI4_NOOBs_ICA/configs/rpi4/.bashrc /home/pi/
+sudo chown -R pi:pi /home/pi/.bashrc
+dialog --infobox " ...Attractmode instalado y con inicio automatico... " 350 350 ; sleep 10
 }
 
 function RPI4_retroarch_install_cores() {                                          
