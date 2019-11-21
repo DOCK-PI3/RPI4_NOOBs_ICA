@@ -179,11 +179,14 @@ dialog --infobox "... RPI4 Script instalador de AttractMode en su version mas re
 # ACTUALIZAR LISTA DE PAQUETES
 sudo apt-get update
 
+#  libjpeg8-dev - prueba change to libjpeg-dev
 # Instalar las dependencias para "sfml-pi" y Attract-Mode ### git-core comment...
-sudo apt-get install -y git make pkg-config libflac-dev libogg-dev libvorbis-dev libopenal-dev libjpeg8-dev libfreetype6-dev libudev-dev libudev-dev libfontconfig1-dev
-sudo apt-get install -y libx11-dev libx11-xcb-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-ewmh-dev libxcb-keysyms1-dev libxcb-icccm4-dev libxrandr2 libxrandr-dev libgles2-mesa-dev
-
-#Descargar y compilar mvp
+sudo apt-get install -y git cmake make pkg-config libraspberrypi-dev libavformat-dev libavfilter-dev libswscale-dev libavresample-dev libavutil-dev libjpeg-dev libavcodec-dev libflac-dev libogg-dev libvorbis-dev libopenal-dev libfreetype6-dev libudev-dev libfontconfig1-dev
+# Dependencia para ejecutar attract en buster RPI4 - xinit attract #
+sudo apt-get install -y xinit
+#sudo apt-get install -y libx11-dev libx11-xcb-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-ewmh-dev libxcb-keysyms1-dev libxcb-icccm4-dev libxrandr2 libxrandr-dev libgles2-mesa-dev
+         
+#Descargar y compilar mpv
 sudo apt-get install -y mpv
 
 #Descargar e instalar sfml-pi
@@ -216,7 +219,9 @@ cd attract && make USE_GLES=1
 sudo make install
 sudo rm -r -f /home/pi/develop
 # dialog --infobox " Ahora se abre attract mode, una vez que inicie attract seleccione su idioma \n y luego cierre atrract mode para seguir con la configuracion. " 350 350 ; sleep 10
-# attract
+
+xinit attract
+killall attract
 
 #### config full rescue ######
 cd && git clone https://github.com/DOCK-PI3/EmuCOPS-Attract-autoconf.git
@@ -229,9 +234,6 @@ sudo rm -R /home/pi/EmuCOPS-Attract-autoconf
 sudo chown -R pi:pi /usr/local/bin/attract
 sudo chown -R pi:pi /usr/local/share/attract/
 sudo chown -R pi:pi /home/pi/.attract/
-
-# Dependencia para ejecutar attract en buster RPI4 - xinit attract #
-sudo apt-get install -y xinit
 
 dialog --infobox "... CREANDO INICIO DE ATTRACT AUTO EN CLI - CONSOLA ..." 30 55 ; sleep 5
 cd && cp .bashrc .bashrc_back
