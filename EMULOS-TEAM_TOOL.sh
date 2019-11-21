@@ -21,7 +21,8 @@ function main_menu() {
 			71 "Rpi4 Retroarch install CORES" \
 			72 "Rpi4 Instala AttractMode - Alternate version X" \
 			73 "Rpi4 Instalar herramienta y actualiza el firmware de tu rpi4" \
-			74 "Rpi4 Buscar actualizaciones del Firmware para su RPI4 " \
+			74 "Rpi4 Desactivar auto-updates del Firmware para su RPI4 " \
+			75 "Rpi4 Activar auto-updates del Firmware para su RPI4 en el inicio" \
 			100 "-------------- OPCIONES ATTRACTMODE AUTOSTART ----------------" \
 			300 "Rpi AttractMode inicio auto CLI consola - version Raspian lite" \
 			320 "Rpi AttractMode inicio auto Escritorio - version Raspian Desktop" \
@@ -36,7 +37,8 @@ function main_menu() {
 			71) RPI4_retroarch_install_cores ;;
 			72) RPI4_attractmode_instalador ;;
 			73) RPI4_installauto_updatefirmw ;;
-			74) RPI4_FIRMWARE_update ;;
+			74) RPI4_FIRMWARE_AutoupdateOFF ;;
+			75) RPI4_FIRMWARE_AutoupdateON ;;
 			300) consola_attract_autolaunch  ;;
             320) desktop_attract_autolaunch  ;;
 			*)  break ;;
@@ -59,10 +61,16 @@ dialog --infobox "... Firmware de rpi4 actualizado correctamente. Reiniciando en
 sudo reboot
 }
 
-function RPI4_FIRMWARE_update() {
-dialog --infobox "... Buscando updates del Firmware para su RPI4 ..." 30 55 ; sleep 2
-sudo rpi-eeprom-update
-dialog --infobox "... Su version de Firmware es: ver consola ...  " 30 55 ; sleep 10
+function RPI4_FIRMWARE_AutoupdateOFF() {
+dialog --infobox "... Desactivando auto-updates del Firmware para su RPI4 ..." 30 55 ; sleep 2
+sudo systemctl mask rpi-eeprom-update
+dialog --infobox "... Puede actualizar de forma manual o activar las auto-updates del firmware en la opcion 75 cuando lo crea oportuno ...  " 30 55 ; sleep 10
+}
+
+function RPI4_FIRMWARE_AutoupdateON() {
+dialog --infobox "... Activando auto-updates del Firmware para su RPI4 en el inicio ..." 30 55 ; sleep 2
+sudo systemctl unmask rpi-eeprom-update
+dialog --infobox "... En el proximo inicio del sistema se buscaran actualizaciones, reinicie si lo desea ...  " 30 55 ; sleep 10
 }
 
 function consola_attract_autolaunch() {                                          
@@ -135,7 +143,7 @@ sudo apt-get install -y build-essential libasound2-dev libudev-dev libxkbcommon-
 cd && curl -LO 'https://github.com/libretro/RetroArch/archive/v1.8.1.tar.gz' && tar -zxvf v1.8.1.tar.gz
 sudo rm v1.8.1.tar.gz
 cd RetroArch-1.8.1
-CFLAGS='-mfpu=neon -mtune=cortex-a72 -march=armv8-a' ./configure --disable-opengl1 --enable-neon --enable-opengles3 --enable-opengles --enable-udev --disable-videocore --enable-alsa
+CFLAGS='-mfpu=neon -mtune=cortex-a72 -march=armv8-a' ./configure --disable-opengl1 --enable-neon --enable-opengles3 --enable-opengles --enable-udev --disable-videocore
 #CFLAGS="-mfpu=neon" ./configure --disable-videocore --enable-opengl --disable-opengl1 --enable-alsa --enable-udev --disable-opengles --enable-neon
 make -j4
 sudo make install
