@@ -143,6 +143,7 @@ cd && sudo rm -R RetroArch-1.8.1/
 dialog --infobox "... Descargando y Copiando BIOS BASE para retroarch en /home/pi/.config/retroarch/system ..." 30 55 ; sleep 3
 cd && mkdir /home/pi/.config/
 cd && mkdir /home/pi/.config/retroarch/
+cd && mkdir /home/pi/.config/retroarch/cores/
 cd && mkdir /home/pi/.config/retroarch/system/
 ##### cargar configuracion retroarch
 cd && cp RPI4_NOOBs_ICA/configs/rpi4/retroarch.cfg /home/pi/.config/retroarch/
@@ -168,15 +169,12 @@ dialog --infobox "... RPI4 Script instalador de AttractMode en su version mas re
 # ACTUALIZAR LISTA DE PAQUETES
 sudo apt-get update
 
-
-
-# Instalar las dependencias para "sfml-pi" y Attract-Mode
+# Instalar las dependencias para "sfml-pi" y Attract-Mode ### git-core comment...
 sudo apt-get install -y git make pkg-config libflac-dev libogg-dev libvorbis-dev libopenal-dev libjpeg8-dev libfreetype6-dev libudev-dev libudev-dev libfontconfig1-dev
 sudo apt-get install -y libx11-dev libx11-xcb-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-ewmh-dev libxcb-keysyms1-dev libxcb-icccm4-dev libxrandr2 libxrandr-dev libgles2-mesa-dev
 
 #Descargar y compilar mvp
 sudo apt-get install -y mpv
-
 
 #Descargar e instalar sfml-pi
 sudo apt-get install -y libsfml-dev
@@ -201,7 +199,7 @@ sudo make -j4 install
 sudo ldconfig
 
 # Descargar y compilar Attract-Mode
-cd && mkdir .attract
+cd && mkdir /home/pi/.attract
 cd /home/pi/develop && git clone https://github.com/mickelson/attract attract
 #dpkg-buildpackage -rfakeroot
 cd attract && make USE_GLES=1
@@ -276,20 +274,5 @@ dialog --infobox "... FlyCast y Mas de 70 Cores instalados de forma correcta, co
 sudo rm -R /home/pi/EmUCoP-cores/
 sudo rm -R /home/pi/LR-CORES-RPI4/
 }
-
-# function samba_instalador() {                                          
-# dialog --infobox "... Instalar SAMBA server - SMB..." 30 55 ; sleep 3
-# sudo apt-get update
-# sudo apt-get install -y samba samba-common-bin smbclient cifs-utils
-# dialog --infobox "... El directorio /home/pi/ se comparte por defecto en modo lectura\nAhora crearemos el directorio sharesd en /home/pi ,aqui tiene permisos de escritura..." 30 55 ; sleep 5
-# sudo rm /etc/samba/smb.conf
-# cd && sudo cp RPI-RoboticsInstalls/configs/smb.conf /etc/samba/
-# dialog --infobox "... Ahora crearemos un usuario para acceder a samba sharesd\n\nEl nombre por defecto es pi\n\nIntrodusca usted la contraseña..." 30 55 ; sleep 7
-# sudo smbpasswd -a pi
-# sudo systemctl restart smbd
-# dialog --infobox "... Instalado SAMBA Server - SMB ...\n\nLa ruta del recurso compartido es: \\RASPBERRYPI\rpisamba \n\nRecuerde ingresar con usuario pi y su contraseña para samba\n\n\n\nSe reinicio samba para cargar la nueva configuracion, recomiendo q reinicie el sistema" 30 55 ; sleep 15
-# cd && cd RPI-RoboticsInstalls/ && ./DOCK-PI3_Roboticsinstall.sh
-# exit
-# }
 
 main_menu
