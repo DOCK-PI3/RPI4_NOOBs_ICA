@@ -129,12 +129,12 @@ sudo dpkg-reconfigure tzdata
 dialog --infobox "... Compilar e instalar RetroArch ,iniciando espere! ..." 30 55 ; sleep 5
 #sudo apt-get install -y build-essential libasound2-dev libudev-dev libgles2-mesa-dev libz-dev libpng-dev
 #sudo apt-get install -y build-essential libxkbcommon-dev zlib1g-dev libfreetype6-dev libegl1-mesa-dev libasound2-dev libudev-dev libgles2-mesa-dev libgles2-mesa-dev libgbm-dev nvidia-cg-toolkit nvidia-cg-dev libavcodec-dev libsdl2-dev libsdl-image1.2-dev libxml2-dev yasm
-sudo apt-get install -y build-essential libxkbcommon-dev zlib1g-dev libfreetype6-dev libegl1-mesa-dev libgles2-mesa-dev libgbm-dev libavcodec-dev libsdl2-dev libsdl-image1.2-dev libxml2-dev yasm libavformat-dev libavdevice-dev libswresample-dev libavresample-dev libswscale-dev libv4l-dev libgl*-mesa-dev
+sudo apt-get install -y build-essential libxkbcommon-dev zlib1g-dev libfreetype6-dev libegl1-mesa-dev libasound2-dev libgles2-mesa-dev libgbm-dev libavcodec-dev libsdl2-dev libsdl-image1.2-dev libxml2-dev yasm libavformat-dev libavdevice-dev libswresample-dev libavresample-dev libswscale-dev libv4l-dev libgl*-mesa-dev
 cd && curl -LO 'https://github.com/libretro/RetroArch/archive/v1.8.1.tar.gz' && tar -zxvf v1.8.1.tar.gz
 sudo rm v1.8.1.tar.gz
 cd RetroArch-1.8.1
-#CFLAGS='-mfpu=neon -mtune=cortex-a72 -march=armv8-a' ./configure --disable-opengl1 --enable-neon --enable-opengles3 --enable-opengles --disable-videocore
-CFLAGS="-mfpu=neon" ./configure --disable-videocore --enable-opengl --disable-opengl1 --enable-alsa --enable-udev --disable-opengles --enable-neon
+CFLAGS='-mfpu=neon -mtune=cortex-a72 -march=armv8-a' ./configure --disable-opengl1 --enable-neon --enable-opengles3 --enable-opengles --enable-udev --disable-videocore --enable-alsa
+#CFLAGS="-mfpu=neon" ./configure --disable-videocore --enable-opengl --disable-opengl1 --enable-alsa --enable-udev --disable-opengles --enable-neon
 make -j4
 sudo make install
 cd && sudo rm -R RetroArch-1.8.1/
