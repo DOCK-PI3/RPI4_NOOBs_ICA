@@ -235,6 +235,12 @@ sudo chown -R pi:pi /usr/local/bin/attract
 sudo chown -R pi:pi /usr/local/share/attract/
 sudo chown -R pi:pi /home/pi/.attract/
 
+##### instalar theme AM-EMUCOPS-HD 16:9 1280X720 
+cd && git clone https://github.com/DOCK-PI3/am-theme-EmuCOPS-HD.git
+cd && mkdir /home/pi/.attract/layouts/EmuCOPS-HD
+cd && cp -R am-theme-EmuCOPS-HD/* /home/pi/.attract/layouts/EmuCOPS-HD/
+sudo rm -R /home/pi/am-theme-EmuCOPS-HD/
+
 dialog --infobox "... CREANDO INICIO DE ATTRACT AUTO EN CLI - CONSOLA ..." 30 55 ; sleep 5
 cd && cp .bashrc .bashrc_back
 cd && sudo cp RPI4_NOOBs_ICA/configs/rpi4/.bashrc /home/pi/
