@@ -116,9 +116,9 @@ exit
 
 # function emulos_instalador() {                                          
 # dialog --infobox "... Script instalador de EmulOS en su version mas reciente ...\n\n" 30 55 ; sleep 3
-# sudo apt-get update
+# sudo apt-get update && sudo apt-get upgrade
 # sudo apt-get install -y git
-# cd && git clone --depth=1 https://github.com/Moriggy/EmulOS-Setup.git
+# cd && git clone --branch fkms_rpi4 --depth=1 https://github.com/Moriggy/EmulOS-Setup.git
 # cd EmulOS-Setup
 # sudo ./emulos_setup.sh
 # }
@@ -139,7 +139,7 @@ dialog --infobox "... Compilar e instalar RetroArch ,iniciando espere! ..." 30 5
 #sudo apt-get install -y build-essential libxkbcommon-dev zlib1g-dev libfreetype6-dev libegl1-mesa-dev libasound2-dev libudev-dev libgles2-mesa-dev libgles2-mesa-dev libgbm-dev nvidia-cg-toolkit nvidia-cg-dev libavcodec-dev libsdl2-dev libsdl-image1.2-dev libxml2-dev yasm
 sudo apt-get install -y build-essential libasound2-dev libudev-dev libxkbcommon-dev zlib1g-dev libfreetype6-dev libegl1-mesa-dev libgles2-mesa-dev libgbm-dev libavcodec-dev libsdl2-dev libsdl-image1.2-dev libxml2-dev yasm libavformat-dev libavdevice-dev libswresample-dev libavresample-dev libswscale-dev libv4l-dev libgl*-mesa-dev
 #build-essential libxkbcommon-dev zlib1g-dev libfreetype6-dev libegl1-mesa-dev libasound2-dev libgles2-mesa-dev libgbm-dev libavcodec-dev libsdl2-dev libsdl-image1.2-dev libxml2-dev yasm libavformat-dev libavdevice-dev libswresample-dev libavresample-dev libswscale-dev libv4l-dev libgl*-mesa-dev
-
+# add sdl psyke repo
 cd && curl -LO 'https://github.com/libretro/RetroArch/archive/v1.8.1.tar.gz' && tar -zxvf v1.8.1.tar.gz
 sudo rm v1.8.1.tar.gz
 cd RetroArch-1.8.1
