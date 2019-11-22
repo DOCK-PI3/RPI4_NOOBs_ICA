@@ -51,7 +51,7 @@ dialog --infobox "... Separador para el menu, sin funcion ..." 30 55 ; sleep 2
 }
 
 function RPI4_installauto_updatefirmw() {
-dialog --infobox "... RPI4 Instala Actualizador de Firmware y actualiza ..." 30 55 ; sleep 3
+dialog --infobox "... RPI4 Instala el actualizador de Firmware y lo actualiza ..." 30 55 ; sleep 3
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get install -y rpi-eeprom rpi-eeprom-images
@@ -115,8 +115,8 @@ exit
 }
 
 # function emulos_instalador() {                                          
-# dialog --infobox "... Script instalador de EmulOS en su version mas reciente ...\n\n" 30 55 ; sleep 3
-# sudo apt-get update && sudo apt-get upgrade
+# dialog --infobox "... RPI4 Script instalador de EmulOS en su version mas reciente ...\n\n" 30 55 ; sleep 3
+# sudo apt-get update && sudo apt-get upgrade -y
 # sudo apt-get install -y git
 # cd && git clone --branch fkms_rpi4 --depth=1 https://github.com/Moriggy/EmulOS-Setup.git
 # cd EmulOS-Setup
@@ -126,8 +126,8 @@ exit
 function RPI4_retroarch_instalador() {                                          
 dialog --infobox "... RIP4 BETA Script instalador de Retroarch en su version 1.8.1 ..." 30 55 ; sleep 5
 sudo apt-get update
-dialog --infobox "... Iniciando actualizacion del sistema y sus paquetes ,comentado dmomento..." 30 55 ; sleep 5
-sudo apt upgrade -y
+dialog --infobox "... Iniciando actualizacion del sistema y sus paquetes ,espere... ..." 30 55 ; sleep 5
+sudo apt-get upgrade -y
 dialog --infobox "... Elija la distribucion para su teclado ..." 30 55 ; sleep 5
 sudo dpkg-reconfigure keyboard-configuration
 dialog --infobox "... Seleccione con espacio es_ES.UTF-8 si vive en España y pulse enter..." 30 55 ; sleep 5
@@ -184,6 +184,7 @@ sudo apt-get update
 sudo apt-get install -y git cmake make pkg-config libraspberrypi-dev libavformat-dev libavfilter-dev libswscale-dev libavresample-dev libavutil-dev libjpeg-dev libavcodec-dev libflac-dev libogg-dev libvorbis-dev libopenal-dev libfreetype6-dev libudev-dev libfontconfig1-dev
 # Dependencia para ejecutar attract en buster RPI4 - xinit attract #
 sudo apt-get install -y xinit
+# moriggy hay que probar a instalar estos paquetes que estan comentados en la proxima linea para ver si se corrige el pequeño fallo que me dio al inicio ..188
 #sudo apt-get install -y libx11-dev libx11-xcb-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-ewmh-dev libxcb-keysyms1-dev libxcb-icccm4-dev libxrandr2 libxrandr-dev libgles2-mesa-dev
          
 #Descargar y compilar mpv
