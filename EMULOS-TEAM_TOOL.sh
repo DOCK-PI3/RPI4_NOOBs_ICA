@@ -183,7 +183,8 @@ sudo apt-get update
 # Instalar las dependencias para "sfml-pi" y Attract-Mode ### git-core comment...
 sudo apt-get install -y git cmake make pkg-config libraspberrypi-dev libavformat-dev libavfilter-dev libswscale-dev libavresample-dev libavutil-dev libjpeg-dev libavcodec-dev libflac-dev libogg-dev libvorbis-dev libopenal-dev libfreetype6-dev libudev-dev libfontconfig1-dev
 # Dependencia para ejecutar attract en buster RPI4 - xinit attract #
-sudo apt-get install -y xinit
+# añadir ----> xorg-server* & ....?
+sudo apt-get install -y xinit xinit-dev
 # moriggy hay que probar a instalar estos paquetes que estan comentados en la proxima linea para ver si se corrige el pequeño fallo que me dio al inicio ..188
 #sudo apt-get install -y libx11-dev libx11-xcb-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-ewmh-dev libxcb-keysyms1-dev libxcb-icccm4-dev libxrandr2 libxrandr-dev libgles2-mesa-dev
          
@@ -218,8 +219,9 @@ cd /home/pi/develop && git clone https://github.com/mickelson/attract attract
 #dpkg-buildpackage -rfakeroot
 cd attract && make USE_GLES=1
 sudo make install
-sudo rm -r -f /home/pi/develop
-# dialog --infobox " Ahora se abre attract mode, una vez que inicie attract seleccione su idioma \n y luego cierre atrract mode para seguir con la configuracion. " 350 350 ; sleep 10
+cd && sudo rm -r -f /home/pi/develop
+
+dialog --infobox " Ahora se abre attract mode, una vez que inicie attract seleccione su idioma \n y luego cierre atrract mode para seguir con la configuracion. " 350 350 ; sleep 10
 
 xinit attract
 killall attract
