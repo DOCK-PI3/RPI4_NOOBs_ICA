@@ -1,5 +1,5 @@
 #!/bin/bash
-version=" 1.0.1"
+version=" 1.1.5"
 infobox="${infobox}\n_______________________________________________________\n\n"
 infobox="${infobox}\n       EMULOS-TEAM_TOOL creado para ayudar a los novatos .....\n\nRPI4_NOOBs_ICA: Instalador de multiples herramientas y utilidades.....\n"
 infobox="${infobox}\n\n_______________________________________________________\n\n"
@@ -287,54 +287,61 @@ platform=rpi4 make -f Makefile.libretro
 
 #---------------------------------------------->
 #---------------------------------------------->
-# dialog --infobox "... RPI4 Retroarch instalando core  mupen64plus-libretro-nx ..." 30 55 ; sleep 2
-# cd ~
-# cd EmUCoP-cores
-# git clone --depth 1 https://github.com/libretro/mupen64plus-libretro-nx.git
-# cd mupen64plus-libretro-nx/mupen64plus-core/projects/unix
-# make all -j4
+dialog --infobox "... RPI4 Retroarch instalando core  mupen64plus-libretro-nx ..." 30 55 ; sleep 2
+cd ~
+cd EmUCoP-cores
+git clone --depth 1 https://github.com/libretro/mupen64plus-libretro-nx.git
+cd mupen64plus-libretro-nx/mupen64plus-core/projects/unix
+make all -j4
 
-# dialog --infobox "... RPI4 Retroarch instalando core libretro-handy ..." 30 55 ; sleep 2
-# cd ~
-# cd EmUCoP-cores
-# git clone --depth 1 https://github.com/libretro/libretro-handy.git
-# cd libretro-handy
-# make -j3
+dialog --infobox "... RPI4 Retroarch instalando core libretro-handy ..." 30 55 ; sleep 2
+cd ~
+cd EmUCoP-cores
+git clone --depth 1 https://github.com/libretro/libretro-handy.git
+cd libretro-handy
+make -j3
 
-# dialog --infobox "... RPI4 Retroarch instalando core  vice-libretro ..." 30 55 ; sleep 2
-# cd ~
-# cd EmUCoP-cores
-# git clone --depth 1 https://github.com/libretro/vice-libretro.git
-# cd vice-libretro
-# platform=rpi4 make -f Makefile.libretro
+dialog --infobox "... RPI4 Retroarch instalando core  vice-libretro ..." 30 55 ; sleep 2
+cd ~
+cd EmUCoP-cores
+git clone --depth 1 https://github.com/libretro/vice-libretro.git
+cd vice-libretro
+platform=rpi4 make -f Makefile.libretro
 
-# dialog --infobox "... RPI4 Retroarch instalando core  picodrive ..." 30 55 ; sleep 2
-# cd ~
-# cd EmUCoP-cores
-# git clone --depth 1 https://github.com/libretro/picodrive.git
-# cd picodrive
-# platform=rpi4 make -f Makefile.libretro
+dialog --infobox "... RPI4 Retroarch instalando core  picodrive ..." 30 55 ; sleep 2
+cd ~
+cd EmUCoP-cores
+git clone --depth 1 https://github.com/libretro/picodrive.git
+cd picodrive
+platform=rpi4 make -f Makefile.libretro
 
-# dialog --infobox "... RPI4 Retroarch instalando core  mame ultima version ..." 30 55 ; sleep 2
-# cd ~
-# cd EmUCoP-cores
-# git clone --depth 1 https://github.com/libretro/mame.git
-# cd mame
-# platform=rpi4 make -j4 -f Makefile.libretro
+dialog --infobox "... RPI4 Retroarch instalando core  mame ultima version ..." 30 55 ; sleep 2
+cd ~
+cd EmUCoP-cores
+git clone --depth 1 https://github.com/libretro/mame.git
+cd mame
+platform=rpi4 make SUBTARGET=arcade -j4 -f Makefile.libretro
 
-# dialog --infobox "... RPI4 Retroarch instalando core  mame version 2015..." 30 55 ; sleep 2
-# cd ~
-# cd EmUCoP-cores
-# git clone --depth 1 https://github.com/libretro/mame2015-libretro.git
-# cd mame2015-libretro
-# platform=rpi4 make -j4
+dialog --infobox "... RPI4 Retroarch instalando core  mame version 2015 ..." 30 55 ; sleep 2
+cd ~
+cd EmUCoP-cores
+git clone --depth 1 https://github.com/libretro/mame2015-libretro.git
+cd mame2015-libretro
+platform=rpi4 make SUBTARGET=arcade -j4
 
-# dialog --infobox "... RPI4 Retroarch instalando core  Flycast ultima version ..." 30 55 ; sleep 2
-# cd ~
-# cd EmUCoP-cores
-# git clone --depth 1 https://github.com/libretro/flycast.git
-# cd flycast
-# platform=rpi4 make -j4
+dialog --infobox "... RPI4 Retroarch instalando core  Flycast ultima version ..." 30 55 ; sleep 2
+cd ~
+cd EmUCoP-cores
+git clone --depth 1 https://github.com/libretro/flycast.git
+cd flycast
+platform=rpi4 make -j4
+
+dialog --infobox "... RPI4 Retroarch instalando core  mame version 2016 ..." 30 55 ; sleep 2
+cd ~
+cd EmUCoP-cores
+git clone --depth 1 https://github.com/libretro/mame2016-libretro.git
+cd mame2016-libretro
+platform=rpi4 make SUBTARGET=arcade -j4 -f Makefile.libretro
 #----------------------------------------------->
 #---------------------------------------------->
 
@@ -348,7 +355,7 @@ cd && cp -R EmUCoP-cores/mupen64plus-libretro/*.so /home/pi/.config/retroarch/co
 cd && cp -R EmUCoP-cores/pcsx_rearmed/pcsx_rearmed_libretro.so /home/pi/.config/retroarch/cores/
 
 dialog --infobox "... FlyCast y Mas de 70 Cores instalados de forma correcta, cores for neos flags optimece.. limpiando basura...." 30 55 ; sleep 2
-sudo rm -R /home/pi/EmUCoP-cores/
+#sudo rm -R /home/pi/EmUCoP-cores/
 sudo rm -R /home/pi/LR-CORES-RPI4/
 }
 
