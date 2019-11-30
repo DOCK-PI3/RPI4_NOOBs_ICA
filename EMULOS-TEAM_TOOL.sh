@@ -16,18 +16,21 @@ function main_menu() {
         choice=$(dialog --backtitle "$BACKTITLE" --title " MAIN MENU " \
             --ok-label OK --cancel-label Exit \
             --menu "Version: $version - Que accion te gustaria realizar?" 25 75 20 \
-			100 "-------------- Para RPI4 ----------------" \
+			100 "------------- RPI4 INSTALADORES & HERRAMIENTAS --------------" \
 			70 "Rpi4 Instala Retroarch 1.8.1" \
 			71 "Rpi4 Retroarch install CORES" \
 			72 "Rpi4 Instala AttractMode - Alternate version X" \
 			73 "Rpi4 Instalar herramienta y actualiza el firmware de tu rpi4" \
 			74 "Rpi4 Desactivar auto-updates del Firmware para su RPI4 " \
 			75 "Rpi4 Activar auto-updates del Firmware para su RPI4 en el inicio" \
+			100 "-----------------------------------------------------------------" \
 			100 "-------------- OPCIONES ATTRACTMODE AUTOSTART ----------------" \
 			300 "Rpi AttractMode inicio auto CLI consola - version Raspian lite" \
 			320 "Rpi AttractMode inicio auto Escritorio - version Raspian Desktop" \
+			100 "-----------------------------------------------------------------" \
 			100 "-------------- RPI4_NOOBs_ICA ACTUALIZAR VERSION ----------------" \
 			69 "######## ACTUALIZAR herramienta RPI4_NOOBs_ICA ########" \
+			100 "-----------------------------------------------------------------" \
 			2>&1 > /dev/tty)
 
         case "$choice" in

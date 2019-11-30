@@ -1,30 +1,38 @@
 # RPI4 NOOBs ICA ,BY EMULOS-TEAM
  Instalador de multiples herramientas y utilidades...
 
- AttractMode ,RetroArch ,EmulOS ....
+ Actualiza el firmware de su RPI4 y le instala la herramienta para 
+ buscar actualizaciones del firmware automaticamente en cada inicio,
+ activa y desactiva las actualizaciones de firmware automaticas en el inicio,
+ instala y deja configurado AttractMode 2.6,RetroArch 1.8.1,ect ....
  
- # Como usar RPI4 NOOBs ICA
+ # Como usar RPI4 NOOBs ICA #
  
- Instalar dependencias
+ 1) Instalar dependencias:
  
  sudo apt-get install -y git dialog build-essential
  
- Clonar repo en github
+ 
+ 2) Clonar repo en github:
  
  git clone https://github.com/DOCK-PI3/RPI4_NOOBs_ICA.git
  
- Dar permisos de ejecucion
+ 
+ 3) Dar permisos de ejecucion:
  
  sudo chmod +x RPI4_NOOBs_ICA/EMULOS-TEAM_TOOL.sh
  
- Entrar en el directorio
+ 
+ 4) Entrar en el directorio:
  
  cd RPI4_NOOBs_ICA/
  
  
- Ejecutar el script
+ 5) Ejecutar el script:
  
  ./EMULOS-TEAM_TOOL.sh
  
  
 BUENA SUERTE!
+
+![Test Image 1](https://github.com/DOCK-PI3/MasOS-Setup/blob/fkms_rpi4/tools/FELIZ_tenor.gif)
