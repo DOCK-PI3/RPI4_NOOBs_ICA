@@ -227,7 +227,7 @@ cd && sudo rm -r -f /home/pi/develop
 dialog --infobox " Ahora se abre attract mode, una vez que inicie attract seleccione su idioma \n y luego cierre atrract mode para seguir con la configuracion. " 350 350 ; sleep 10
 
 xinit attract
-killall attract
+sudo killall attract
 
 #### config full rescue ######
 cd && git clone https://github.com/DOCK-PI3/EmuCOPS-Attract-autoconf.git
@@ -284,6 +284,59 @@ cd EmUCoP-cores
 git clone --depth 1 https://github.com/libretro/pcsx_rearmed.git
 cd pcsx_rearmed
 platform=rpi4 make -f Makefile.libretro
+
+#---------------------------------------------->
+#---------------------------------------------->
+# dialog --infobox "... RPI4 Retroarch instalando core  mupen64plus-libretro-nx ..." 30 55 ; sleep 2
+# cd ~
+# cd EmUCoP-cores
+# git clone --depth 1 https://github.com/libretro/mupen64plus-libretro-nx.git
+# cd mupen64plus-libretro-nx/mupen64plus-core/projects/unix
+# make all -j4
+
+# dialog --infobox "... RPI4 Retroarch instalando core libretro-handy ..." 30 55 ; sleep 2
+# cd ~
+# cd EmUCoP-cores
+# git clone --depth 1 https://github.com/libretro/libretro-handy.git
+# cd libretro-handy
+# make -j3
+
+# dialog --infobox "... RPI4 Retroarch instalando core  vice-libretro ..." 30 55 ; sleep 2
+# cd ~
+# cd EmUCoP-cores
+# git clone --depth 1 https://github.com/libretro/vice-libretro.git
+# cd vice-libretro
+# platform=rpi4 make -f Makefile.libretro
+
+# dialog --infobox "... RPI4 Retroarch instalando core  picodrive ..." 30 55 ; sleep 2
+# cd ~
+# cd EmUCoP-cores
+# git clone --depth 1 https://github.com/libretro/picodrive.git
+# cd picodrive
+# platform=rpi4 make -f Makefile.libretro
+
+# dialog --infobox "... RPI4 Retroarch instalando core  mame ultima version ..." 30 55 ; sleep 2
+# cd ~
+# cd EmUCoP-cores
+# git clone --depth 1 https://github.com/libretro/mame.git
+# cd mame
+# platform=rpi4 make -j4 -f Makefile.libretro
+
+# dialog --infobox "... RPI4 Retroarch instalando core  mame version 2015..." 30 55 ; sleep 2
+# cd ~
+# cd EmUCoP-cores
+# git clone --depth 1 https://github.com/libretro/mame2015-libretro.git
+# cd mame2015-libretro
+# platform=rpi4 make -j4
+
+# dialog --infobox "... RPI4 Retroarch instalando core  Flycast ultima version ..." 30 55 ; sleep 2
+# cd ~
+# cd EmUCoP-cores
+# git clone --depth 1 https://github.com/libretro/flycast.git
+# cd flycast
+# platform=rpi4 make -j4
+#----------------------------------------------->
+#---------------------------------------------->
 
 dialog --infobox "... Descargando y Copiando mas de 70 cores para retroarch en /home/pi/.config/retroarch/cores ..." 30 55 ; sleep 5
 cd && git clone https://github.com/DOCK-PI3/LR-CORES-RPI4.git
