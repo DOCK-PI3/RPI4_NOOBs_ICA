@@ -186,8 +186,8 @@ sudo apt-get update
 # Instalar las dependencias para "sfml-pi" y Attract-Mode ### git-core comment...
 sudo apt-get install -y git cmake make pkg-config libraspberrypi-dev libavformat-dev libavfilter-dev libswscale-dev libavresample-dev libavutil-dev libjpeg-dev libavcodec-dev libflac-dev libogg-dev libvorbis-dev libopenal-dev libfreetype6-dev libudev-dev libfontconfig1-dev
 # Dependencia para ejecutar attract en buster RPI4 - xinit attract #
-# añadir ----> xorg-server* & ....?
-sudo apt-get install -y xinit xinit-dev
+# ----> sudo Xorg :0 -configure uuu :0.0
+sudo apt-get install -y xinit xinit-dev xterm xorg xorg-dev xorg-server-source
 # moriggy hay que probar a instalar estos paquetes que estan comentados en la proxima linea para ver si se corrige el pequeño fallo que me dio al inicio ..188
 #sudo apt-get install -y libx11-dev libx11-xcb-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-ewmh-dev libxcb-keysyms1-dev libxcb-icccm4-dev libxrandr2 libxrandr-dev libgles2-mesa-dev
          
@@ -287,47 +287,68 @@ platform=rpi4 make -f Makefile.libretro
 
 #---------------------------------------------->
 #---------------------------------------------->
-dialog --infobox "... RPI4 Retroarch instalando core  mupen64plus-libretro-nx ..." 30 55 ; sleep 2
-cd ~
-cd EmUCoP-cores
-git clone --depth 1 https://github.com/libretro/mupen64plus-libretro-nx.git
-cd mupen64plus-libretro-nx/mupen64plus-core/projects/unix
-make all -j4
+# dialog --infobox "... RPI4 Retroarch instalando core  mupen64plus-libretro-nx ..." 30 55 ; sleep 2
+# cd ~
+# cd EmUCoP-cores
+# git clone --depth 1 https://github.com/libretro/mupen64plus-libretro-nx.git
+# cd mupen64plus-libretro-nx/mupen64plus-core/projects/unix
+# make all -j4
 
 dialog --infobox "... RPI4 Retroarch instalando core libretro-handy ..." 30 55 ; sleep 2
 cd ~
 cd EmUCoP-cores
 git clone --depth 1 https://github.com/libretro/libretro-handy.git
 cd libretro-handy
-make -j3
+make -j4
 
 dialog --infobox "... RPI4 Retroarch instalando core  vice-libretro ..." 30 55 ; sleep 2
 cd ~
 cd EmUCoP-cores
 git clone --depth 1 https://github.com/libretro/vice-libretro.git
 cd vice-libretro
-platform=rpi4 make -f Makefile.libretro
+make -f Makefile.libretro
 
 dialog --infobox "... RPI4 Retroarch instalando core  picodrive ..." 30 55 ; sleep 2
 cd ~
 cd EmUCoP-cores
 git clone --depth 1 https://github.com/libretro/picodrive.git
 cd picodrive
-platform=rpi4 make -f Makefile.libretro
+make -j4 -f Makefile.libretro
 
 dialog --infobox "... RPI4 Retroarch instalando core  mame ultima version ..." 30 55 ; sleep 2
 cd ~
 cd EmUCoP-cores
 git clone --depth 1 https://github.com/libretro/mame.git
 cd mame
-platform=rpi4 make SUBTARGET=arcade -j4 -f Makefile.libretro
+platform=rpi4 make -j4 -f Makefile.libretro
 
-dialog --infobox "... RPI4 Retroarch instalando core  mame version 2015 ..." 30 55 ; sleep 2
+dialog --infobox "... RPI4 Retroarch instalando core  81-libretro ultima version ..." 30 55 ; sleep 2
 cd ~
 cd EmUCoP-cores
-git clone --depth 1 https://github.com/libretro/mame2015-libretro.git
-cd mame2015-libretro
-platform=rpi4 make SUBTARGET=arcade -j4
+git clone --depth 1 https://github.com/libretro/81-libretro.git
+cd 81-libretro
+make -j4 -f Makefile.libretro
+
+dialog --infobox "... RPI4 Retroarch instalando core Hatari ultima version ..." 30 55 ; sleep 2
+cd ~
+cd EmUCoP-cores
+git clone http://github.com/libretro/hatari
+cd hatari
+make -j4 -f Makefile.libretro EXTERNAL_ZLIB=1
+
+dialog --infobox "... RPI4 Retroarch instalando core libretro-atari800 ..." 30 55 ; sleep 2
+cd ~
+cd EmUCoP-cores
+git clone --depth 1 https://github.com/libretro/libretro-atari800.git
+cd libretro-atari800
+make -j4
+
+# dialog --infobox "... RPI4 Retroarch instalando core  mame version 2015 ..." 30 55 ; sleep 2
+# cd ~
+# cd EmUCoP-cores
+# git clone --depth 1 https://github.com/libretro/mame2015-libretro.git
+# cd mame2015-libretro
+# platform=rpi4 make -j4
 
 dialog --infobox "... RPI4 Retroarch instalando core  Flycast ultima version ..." 30 55 ; sleep 2
 cd ~
@@ -336,12 +357,19 @@ git clone --depth 1 https://github.com/libretro/flycast.git
 cd flycast
 platform=rpi4 make -j4
 
+dialog --infobox "... RPI4 Retroarch instalando core  Daphne ultima version ..." 30 55 ; sleep 2
+cd ~
+cd EmUCoP-cores
+git clone --depth 1 https://github.com/libretro/daphne.git
+cd daphne
+make -j4
+
 dialog --infobox "... RPI4 Retroarch instalando core  mame version 2016 ..." 30 55 ; sleep 2
 cd ~
 cd EmUCoP-cores
 git clone --depth 1 https://github.com/libretro/mame2016-libretro.git
 cd mame2016-libretro
-platform=rpi4 make SUBTARGET=arcade -j4 -f Makefile.libretro
+platform=rpi4 make -j4 -f Makefile.libretro
 #----------------------------------------------->
 #---------------------------------------------->
 
