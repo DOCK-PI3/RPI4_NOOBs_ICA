@@ -241,14 +241,16 @@ cd && sudo rm -r -f /home/pi/develop
 
 dialog --infobox " Ahora se abre attract mode, una vez que inicie attract seleccione su idioma \n y luego cierre atrract mode para seguir con la configuracion. " 350 350 ; sleep 10
 
-xinit attract
+startx attract
 sudo killall attract
 
 #### config full rescue ######
+cd && mkdir .attract
 cd && git clone https://github.com/DOCK-PI3/EmuCOPS-Attract-autoconf.git
-cp -R /home/pi/EmuCOPS-Attract-autoconf/attract/* /home/pi/.attract/
-cd && mkdir EmuCOPS
-cp -R /home/pi/EmuCOPS-Attract-autoconf/EmuCOPS/* /home/pi/EmuCOPS/
+cd && cp -R /home/pi/EmuCOPS-Attract-autoconf/attract/* /home/pi/.attract/
+cd && mkdir EmulOS
+cd && cp -R /home/pi/EmuCOPS-Attract-autoconf/EmuCOPS/* /home/pi/EmulOS/
+cd && sudo cp -R /home/pi/EmuCOPS-Attract-autoconf/usr/local/share/attract/* /usr/local/share/attract/
 sudo rm -R /home/pi/EmuCOPS-Attract-autoconf
 
 # Permisos rutas attract #
@@ -330,12 +332,12 @@ git clone --depth 1 https://github.com/libretro/picodrive.git
 cd picodrive
 make -j4 -f Makefile.libretro
 
-dialog --infobox "... RPI4 Retroarch instalando core  mame ultima version ..." 30 55 ; sleep 2
-cd ~
-cd EmUCoP-cores
-git clone --depth 1 https://github.com/libretro/mame.git
-cd mame
-platform=rpi4 make -j4 -f Makefile.libretro
+# dialog --infobox "... RPI4 Retroarch instalando core  mame ultima version ..." 30 55 ; sleep 2
+# cd ~
+# cd EmUCoP-cores
+# git clone --depth 1 https://github.com/libretro/mame.git
+# cd mame
+# platform=rpi4 make -j4 -f Makefile.libretro
 
 dialog --infobox "... RPI4 Retroarch instalando core  81-libretro ultima version ..." 30 55 ; sleep 2
 cd ~
@@ -386,13 +388,12 @@ git clone --depth 1 https://github.com/libretro/daphne.git
 cd daphne
 make -j4
 
-# AÑADIDO AL PACK DE CORES
-# dialog --infobox "... RPI4 Retroarch instalando core  mame version 2016 ..." 30 55 ; sleep 2
-# cd ~
-# cd EmUCoP-cores
-# git clone --depth 1 https://github.com/libretro/mame2016-libretro.git
-# cd mame2016-libretro
-# platform=rpi4 make -j4 -f Makefile.libretro
+dialog --infobox "... RPI4 Retroarch instalando core  mame version 2016 ..." 30 55 ; sleep 2
+cd ~
+cd EmUCoP-cores
+git clone --depth 1 https://github.com/libretro/mame2016-libretro.git
+cd mame2016-libretro
+platform=rpi4 make -j4 -f Makefile.libretro
 #----------------------------------------------->
 #---------------------------------------------->
 
