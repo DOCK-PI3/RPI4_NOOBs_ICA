@@ -1,7 +1,7 @@
 #!/bin/bash
 version=" 1.1.5"
 infobox="${infobox}\n_______________________________________________________\n\n"
-infobox="${infobox}\n       EMULOS-TEAM_TOOL creado para ayudar a los novatos .....\n\nRPI4_NOOBs_ICA: Instalador de multiples herramientas y utilidades.....\n"
+infobox="${infobox}\n       EMULOS-TEAM_TOOL creado para ayudar a los noobs .....\n\nRPI4_NOOBs_ICA: Instalador de multiples herramientas y utilidades.....\n"
 infobox="${infobox}\n\n_______________________________________________________\n\n"
 #infobox="${infobox}\n       AttractMode 2.6,RetroArch 1.8.1 ,WebMin ,Mumble server\n\nSamba ,vsFTPd ,Duck DNS ,Pi-Hole ,Pi-VPN ,EmulOS ,EmuCOPS NOOBs v1 y MasOS."
 infobox="${infobox}\n\n\n_______________________________________________________\n\n"
@@ -23,6 +23,8 @@ function main_menu() {
 			73 "Rpi4 Instalar herramienta y actualiza el firmware de tu rpi4" \
 			74 "Rpi4 Desactivar auto-updates del Firmware para su RPI4 " \
 			75 "Rpi4 Activar auto-updates del Firmware para su RPI4 en el inicio" \
+			76 "Rpi4 Instala samba y lo configura en su raspberry pi4b" \
+			77 "Rpi4 Edita con Nano la configuracion de samba" \
 			100 "-----------------------------------------------------------------" \
 			100 "-------------- OPCIONES ATTRACTMODE AUTOSTART ----------------" \
 			300 "Rpi AttractMode inicio auto CLI consola - version Raspian lite" \
@@ -42,6 +44,8 @@ function main_menu() {
 			73) RPI4_installauto_updatefirmw ;;
 			74) RPI4_FIRMWARE_AutoupdateOFF ;;
 			75) RPI4_FIRMWARE_AutoupdateON ;;
+			76) RPI4_samba_install ;;
+			77) RPI4_samba_smb_config ;;
 			300) consola_attract_autolaunch  ;;
             320) desktop_attract_autolaunch  ;;
 			*)  break ;;
@@ -51,6 +55,17 @@ function main_menu() {
 
 function separador_menu() {                                          
 dialog --infobox "... Separador para el menu, sin funcion ..." 30 55 ; sleep 2
+}
+
+function RPI4_samba_install() {                                          
+dialog --infobox "... Instalando samba ..." 30 55 ; sleep 3
+sudo apt-get install -y samba
+cd && sudo cp RPI4_NOOBs_ICA/configs/smb.conf /etc/samba/
+}
+
+function RPI4_samba_smb_config() {                                          
+dialog --infobox "... Abriendo samba smb conf  con nano editor ..." 30 55 ; sleep 3
+sudo nano /etc/samba/smb.conf
 }
 
 function RPI4_installauto_updatefirmw() {
@@ -142,7 +157,7 @@ dialog --infobox "... Compilar e instalar RetroArch ,iniciando espere! ..." 30 5
 #sudo apt-get install -y build-essential libxkbcommon-dev zlib1g-dev libfreetype6-dev libegl1-mesa-dev libasound2-dev libudev-dev libgles2-mesa-dev libgles2-mesa-dev libgbm-dev nvidia-cg-toolkit nvidia-cg-dev libavcodec-dev libsdl2-dev libsdl-image1.2-dev libxml2-dev yasm
 sudo apt-get install -y build-essential libasound2-dev libudev-dev libxkbcommon-dev zlib1g-dev libfreetype6-dev libegl1-mesa-dev libgles2-mesa-dev libgbm-dev libavcodec-dev libsdl2-dev libsdl-image1.2-dev libxml2-dev yasm libavformat-dev libavdevice-dev libswresample-dev libavresample-dev libswscale-dev libv4l-dev libgl*-mesa-dev
 #build-essential libxkbcommon-dev zlib1g-dev libfreetype6-dev libegl1-mesa-dev libasound2-dev libgles2-mesa-dev libgbm-dev libavcodec-dev libsdl2-dev libsdl-image1.2-dev libxml2-dev yasm libavformat-dev libavdevice-dev libswresample-dev libavresample-dev libswscale-dev libv4l-dev libgl*-mesa-dev
-# add sdl psyke repo
+#
 cd && curl -LO 'https://github.com/libretro/RetroArch/archive/v1.8.1.tar.gz' && tar -zxvf v1.8.1.tar.gz
 sudo rm v1.8.1.tar.gz
 cd RetroArch-1.8.1
@@ -188,7 +203,6 @@ sudo apt-get install -y git cmake make pkg-config libraspberrypi-dev libavformat
 # Dependencia para ejecutar attract en buster RPI4 - xinit attract #
 # ----> sudo Xorg :0 -configure uuu :0.0
 sudo apt-get install -y xinit xinit-dev xterm xorg xorg-dev xorg-server-source
-# moriggy hay que probar a instalar estos paquetes que estan comentados en la proxima linea para ver si se corrige el pequeño fallo que me dio al inicio ..188
 #sudo apt-get install -y libx11-dev libx11-xcb-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-ewmh-dev libxcb-keysyms1-dev libxcb-icccm4-dev libxrandr2 libxrandr-dev libgles2-mesa-dev
          
 #Descargar y compilar mpv
@@ -207,7 +221,8 @@ sudo apt-get install -y libsfml-dev
 
 # Crear entorno para compilar
 cd /home/pi && mkdir develop
-# Compilar FFmpeg con soporte mmal (decodificacion de video acelerada por hardware)
+# Compilar FFmpeg con soporte mmal (decodificacion de video acelerada por hardware) 
+# en la pi4 no va muy bien, usando x software en su lugar..
 cd /home/pi/develop
 git clone --depth 1 git://source.ffmpeg.org/ffmpeg.git
 cd ffmpeg
@@ -357,6 +372,13 @@ git clone --depth 1 https://github.com/libretro/flycast.git
 cd flycast
 platform=rpi4 make -j4
 
+dialog --infobox "... RPI4 Retroarch instalando core  FlycastCE ultima version ..." 30 55 ; sleep 2
+cd ~
+cd EmUCoP-cores
+git clone --single-branch --branch fh/wince --depth=1 https://github.com/libretro/flycast.git
+cd flycast
+platform=rpi4 make -j4
+
 dialog --infobox "... RPI4 Retroarch instalando core  Daphne ultima version ..." 30 55 ; sleep 2
 cd ~
 cd EmUCoP-cores
@@ -364,12 +386,13 @@ git clone --depth 1 https://github.com/libretro/daphne.git
 cd daphne
 make -j4
 
-dialog --infobox "... RPI4 Retroarch instalando core  mame version 2016 ..." 30 55 ; sleep 2
-cd ~
-cd EmUCoP-cores
-git clone --depth 1 https://github.com/libretro/mame2016-libretro.git
-cd mame2016-libretro
-platform=rpi4 make -j4 -f Makefile.libretro
+# AÑADIDO AL PACK DE CORES
+# dialog --infobox "... RPI4 Retroarch instalando core  mame version 2016 ..." 30 55 ; sleep 2
+# cd ~
+# cd EmUCoP-cores
+# git clone --depth 1 https://github.com/libretro/mame2016-libretro.git
+# cd mame2016-libretro
+# platform=rpi4 make -j4 -f Makefile.libretro
 #----------------------------------------------->
 #---------------------------------------------->
 
@@ -382,7 +405,7 @@ cd && cp -R EmUCoP-cores/snes9x2010/*.so /home/pi/.config/retroarch/cores
 cd && cp -R EmUCoP-cores/mupen64plus-libretro/*.so /home/pi/.config/retroarch/cores
 cd && cp -R EmUCoP-cores/pcsx_rearmed/pcsx_rearmed_libretro.so /home/pi/.config/retroarch/cores/
 
-dialog --infobox "... FlyCast y Mas de 70 Cores instalados de forma correcta, cores for neos flags optimece.. limpiando basura...." 30 55 ; sleep 2
+dialog --infobox "... FlyCast y Mas de 70 Cores instalados de forma correcta, cores for neons flags optimece.. limpiando basura...." 30 55 ; sleep 2
 #sudo rm -R /home/pi/EmUCoP-cores/
 sudo rm -R /home/pi/LR-CORES-RPI4/
 }
