@@ -239,7 +239,7 @@ cd attract && make USE_GLES=1
 sudo make install
 cd && sudo rm -r -f /home/pi/develop
 
-dialog --infobox " Ahora se abre attract mode, una vez que inicie attract seleccione su idioma \n y luego cierre atrract mode para seguir con la configuracion. " 350 350 ; sleep 10
+dialog --infobox " Ahora si se abre attract mode, una vez que inicie seleccione su idioma \n y luego cierre atrract mode para seguir con la configuracion. " 350 350 ; sleep 10
 
 startx attract
 sudo killall attract
@@ -374,12 +374,12 @@ git clone --depth 1 https://github.com/libretro/flycast.git
 cd flycast
 platform=rpi4 make -j4
 
-dialog --infobox "... RPI4 Retroarch instalando core  FlycastCE ultima version ..." 30 55 ; sleep 2
-cd ~
-cd EmUCoP-cores
-git clone --single-branch --branch fh/wince --depth=1 https://github.com/libretro/flycast.git
-cd flycast
-platform=rpi4 make -j4
+# dialog --infobox "... RPI4 Retroarch instalando core  FlycastCE ultima version ..." 30 55 ; sleep 2
+# cd ~
+# cd EmUCoP-cores
+# git clone --single-branch --branch fh/wince --depth=1 https://github.com/libretro/flycast.git
+# cd flycast
+# platform=rpi4 make -j4
 
 dialog --infobox "... RPI4 Retroarch instalando core  Daphne ultima version ..." 30 55 ; sleep 2
 cd ~
