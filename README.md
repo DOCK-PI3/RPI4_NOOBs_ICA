@@ -11,10 +11,9 @@
  NOTA: Si pretende instalar attract y retroarch con sus cores... tiene q ejecutar raspi-config ir a opciones avanzadas y en memory split poner 256
  
  
- 1) Instalar dependencias:
+ 1) Instalar dependencias: IMPORTANTE NOTA: Ejecute esta instalacion de dependencias desde la misma raspberry pi4 y NO por SSH
  
  sudo apt-get install -y git dialog build-essential xinit xinit-dev xterm xorg xorg-dev xorg-server-source
- 
  
  2) Clonar repo en github:
  
