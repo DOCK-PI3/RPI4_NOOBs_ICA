@@ -1,9 +1,9 @@
 #!/bin/bash
 version=" 1.2.0"
 infobox="${infobox}\n_______________________________________________________\n\n"
-infobox="${infobox}\n       EMULOS-TEAM_TOOL creado para ayudar a los noobs .....\n\nRPI4_NOOBs_ICA: Instalador de multiples herramientas y utilidades.....\n"
+infobox="${infobox}\n EMULOS-TEAM_TOOL creado para ayudar a los noobs .....\n\nRPI4_NOOBs_ICA: Instalador de multiples herramientas y utilidades.....\n"
 infobox="${infobox}\n\n_______________________________________________________\n\n"
-#infobox="${infobox}\n       AttractMode 2.6,RetroArch 1.8.1 ,WebMin ,Mumble server\n\nSamba ,vsFTPd ,Duck DNS ,Pi-Hole ,Pi-VPN ,EmulOS ,EmuCOPS NOOBs v1 y MasOS."
+infobox="${infobox}\n De momento tenemos para instalar:\n\nAttractMode 2.6\n\nRetroArch 1.8.1\n\nHerramienta para actualizar el firmware de nuestra RPI4."
 infobox="${infobox}\n\n\n_______________________________________________________\n\n"
 dialog --backtitle "Version de la aplicacion: $version - Multi-instalador de Herramientas y utils" \
 --title "Instalador de sistemas y utilidades rpi 4b (by EmulOS TEAM)" \
