@@ -19,6 +19,7 @@
  IMPORTANTE NOTA: Ejecute esta instalacion de dependencias desde la misma raspberry pi4 y NO por SSH ,recuerde que si solo quiere actualizar instale simplemente estas dependencias: sudo apt-get install -y git dialog build-essential
  
  Si prentende instalar attract 2.6 y retroarch 1.8.1 instale estas como se comenta en la nota anterior.
+ 
  sudo apt-get install -y git dialog build-essential xinit xinit-dev xterm xorg xorg-dev xorg-server-source
  
  2) Clonar repo en github:
