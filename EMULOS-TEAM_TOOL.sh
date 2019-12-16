@@ -1,5 +1,5 @@
 #!/bin/bash
-version=" 1.1.5"
+version=" 1.2.0"
 infobox="${infobox}\n_______________________________________________________\n\n"
 infobox="${infobox}\n       EMULOS-TEAM_TOOL creado para ayudar a los noobs .....\n\nRPI4_NOOBs_ICA: Instalador de multiples herramientas y utilidades.....\n"
 infobox="${infobox}\n\n_______________________________________________________\n\n"
@@ -21,10 +21,8 @@ function main_menu() {
 			71 "Rpi4 Retroarch install CORES" \
 			72 "Rpi4 Instala AttractMode - Alternate version X" \
 			73 "Rpi4 Instalar herramienta y actualiza el firmware de tu rpi4" \
-			74 "Rpi4 Desactivar auto-updates del Firmware para su RPI4 " \
+			74 "Rpi4 Desactivar auto-updates del Firmware para su RPI4 en el inicio" \
 			75 "Rpi4 Activar auto-updates del Firmware para su RPI4 en el inicio" \
-			76 "Rpi4 Instala samba y lo configura en su raspberry pi4b" \
-			77 "Rpi4 Edita con Nano la configuracion de samba" \
 			100 "-----------------------------------------------------------------" \
 			100 "-------------- OPCIONES ATTRACTMODE AUTOSTART ----------------" \
 			300 "Rpi AttractMode inicio auto CLI consola - version Raspian lite" \
@@ -44,8 +42,8 @@ function main_menu() {
 			73) RPI4_installauto_updatefirmw ;;
 			74) RPI4_FIRMWARE_AutoupdateOFF ;;
 			75) RPI4_FIRMWARE_AutoupdateON ;;
-			76) RPI4_samba_install ;;
-			77) RPI4_samba_smb_config ;;
+			# 76) RPI4_samba_install ;;
+			# 77) RPI4_samba_smb_config ;;
 			300) consola_attract_autolaunch  ;;
             320) desktop_attract_autolaunch  ;;
 			*)  break ;;
@@ -57,16 +55,16 @@ function separador_menu() {
 dialog --infobox "... Separador para el menu, sin funcion ..." 30 55 ; sleep 2
 }
 
-function RPI4_samba_install() {                                          
-dialog --infobox "... Instalando samba ..." 30 55 ; sleep 3
-sudo apt-get install -y samba
-cd && sudo cp RPI4_NOOBs_ICA/configs/smb.conf /etc/samba/
-}
+# function RPI4_samba_install() {                                          
+# dialog --infobox "... Instalando samba ..." 30 55 ; sleep 3
+# sudo apt-get install -y samba
+# cd && sudo cp RPI4_NOOBs_ICA/configs/smb.conf /etc/samba/
+# }
 
-function RPI4_samba_smb_config() {                                          
-dialog --infobox "... Abriendo samba smb conf  con nano editor ..." 30 55 ; sleep 3
-sudo nano /etc/samba/smb.conf
-}
+# function RPI4_samba_smb_config() {                                          
+# dialog --infobox "... Abriendo samba smb conf  con nano editor ..." 30 55 ; sleep 3
+# sudo nano /etc/samba/smb.conf
+# }
 
 function RPI4_installauto_updatefirmw() {
 dialog --infobox "... RPI4 Instala el actualizador de Firmware y lo actualiza ..." 30 55 ; sleep 3
