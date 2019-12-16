@@ -38,3 +38,9 @@
 BUENA SUERTE!
 
 ![Test Image 1](https://github.com/DOCK-PI3/MasOS-Setup/blob/fkms_rpi4/tools/FELIZ_tenor.gif)
+
+ALGUNAS CAPTURAS SOBRE ESTE SCRIPT:
+
+![Test Image 2](https://github.com/DOCK-PI3/RPI4_NOOBs_ICA/blob/master/fotoinfo/Captura1.png)
+
+![Test Image 3](https://github.com/DOCK-PI3/RPI4_NOOBs_ICA/blob/master/fotoinfo/Captura2.png)
