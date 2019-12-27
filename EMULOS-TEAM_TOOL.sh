@@ -3,7 +3,7 @@ version=" 1.2.0"
 infobox="${infobox}\n_______________________________________________________\n\n"
 infobox="${infobox}\n EMULOS-TEAM_TOOL creado para ayudar a los noobs .....\n\nRPI4_NOOBs_ICA: Instalador de multiples herramientas y utilidades.....\n"
 infobox="${infobox}\n\n_______________________________________________________\n\n"
-infobox="${infobox}\n De momento tenemos para instalar:\n\nAttractMode 2.6\n\nRetroArch 1.8.1\n\nHerramienta para actualizar el firmware de nuestra RPI4."
+infobox="${infobox}\n De momento tenemos para instalar:\n\nAttractMode 2.6\n\nRetroArch 1.8.2\n\nHerramienta para actualizar el firmware de nuestra RPI4."
 infobox="${infobox}\n\n\n_______________________________________________________\n\n"
 dialog --backtitle "Version de la aplicacion: $version - Multi-instalador de Herramientas y utils" \
 --title "Instalador de sistemas y utilidades rpi 4b (by EmulOS TEAM)" \
@@ -17,7 +17,7 @@ function main_menu() {
             --ok-label OK --cancel-label Exit \
             --menu "Version: $version - Que accion te gustaria realizar?" 25 75 20 \
 			100 "------------- RPI4 INSTALADORES & HERRAMIENTAS --------------" \
-			70 "Rpi4 Instala Retroarch 1.8.1" \
+			70 "Rpi4 Instala Retroarch 1.8.2" \
 			71 "Rpi4 Retroarch install CORES" \
 			72 "Rpi4 Instala AttractMode - Alternate version X" \
 			73 "Rpi4 Instalar herramienta y actualiza el firmware de tu rpi4" \
