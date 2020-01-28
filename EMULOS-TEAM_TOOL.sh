@@ -3,7 +3,7 @@ version=" 1.2.0"
 infobox="${infobox}\n_______________________________________________________\n\n"
 infobox="${infobox}\n EMULOS-TEAM_TOOL creado para ayudar a los noobs .....\n\nRPI4_NOOBs_ICA: Instalador de multiples herramientas y utilidades.....\n"
 infobox="${infobox}\n\n_______________________________________________________\n\n"
-infobox="${infobox}\n De momento tenemos para instalar:\n\nAttractMode 2.6\n\nRetroArch 1.8.2\n\nHerramienta para actualizar el firmware de nuestra RPI4."
+infobox="${infobox}\n De momento tenemos para instalar:\n\nAttractMode 2.6\n\nRetroArch 1.8.4\n\nHerramienta para actualizar el firmware de nuestra RPI4."
 infobox="${infobox}\n\n\n_______________________________________________________\n\n"
 dialog --backtitle "Version de la aplicacion: $version - Multi-instalador de Herramientas y utils" \
 --title "Instalador de sistemas y utilidades rpi 4b (by EmulOS TEAM)" \
@@ -17,7 +17,7 @@ function main_menu() {
             --ok-label OK --cancel-label Exit \
             --menu "Version: $version - Que accion te gustaria realizar?" 25 75 20 \
 			100 "------------- RPI4 INSTALADORES & HERRAMIENTAS --------------" \
-			70 "Rpi4 Instala Retroarch 1.8.2" \
+			70 "Rpi4 Instala Retroarch 1.8.4" \
 			71 "Rpi4 Retroarch install CORES" \
 			72 "Rpi4 Instala AttractMode - Alternate version X" \
 			73 "Rpi4 Instalar herramienta y actualiza el firmware de tu rpi4" \
@@ -140,7 +140,7 @@ exit
 # }
 
 function RPI4_retroarch_instalador() {                                          
-dialog --infobox "... RIP4 BETA Script instalador de Retroarch en su version 1.8.2 ..." 30 55 ; sleep 5
+dialog --infobox "... RIP4 BETA Script instalador de Retroarch en su version 1.8.4 ..." 30 55 ; sleep 5
 sudo apt-get update
 dialog --infobox "... Iniciando actualizacion del sistema y sus paquetes ,espere... ..." 30 55 ; sleep 5
 sudo apt-get upgrade -y
@@ -151,19 +151,17 @@ sudo dpkg-reconfigure locales
 dialog --infobox "... Elija su zona horaria ..." 30 55 ; sleep 5
 sudo dpkg-reconfigure tzdata
 dialog --infobox "... Compilar e instalar RetroArch ,iniciando espere! ..." 30 55 ; sleep 5
-#sudo apt-get install -y build-essential libasound2-dev libudev-dev libgles2-mesa-dev libz-dev libpng-dev
-#sudo apt-get install -y build-essential libxkbcommon-dev zlib1g-dev libfreetype6-dev libegl1-mesa-dev libasound2-dev libudev-dev libgles2-mesa-dev libgles2-mesa-dev libgbm-dev nvidia-cg-toolkit nvidia-cg-dev libavcodec-dev libsdl2-dev libsdl-image1.2-dev libxml2-dev yasm
+
 sudo apt-get install -y build-essential libasound2-dev libudev-dev libxkbcommon-dev zlib1g-dev libfreetype6-dev libegl1-mesa-dev libgles2-mesa-dev libgbm-dev libavcodec-dev libsdl2-dev libsdl-image1.2-dev libxml2-dev yasm libavformat-dev libavdevice-dev libswresample-dev libavresample-dev libswscale-dev libv4l-dev libgl*-mesa-dev
-#build-essential libxkbcommon-dev zlib1g-dev libfreetype6-dev libegl1-mesa-dev libasound2-dev libgles2-mesa-dev libgbm-dev libavcodec-dev libsdl2-dev libsdl-image1.2-dev libxml2-dev yasm libavformat-dev libavdevice-dev libswresample-dev libavresample-dev libswscale-dev libv4l-dev libgl*-mesa-dev
-#
-cd && curl -LO 'https://github.com/libretro/RetroArch/archive/v1.8.2.tar.gz' && tar -zxvf v1.8.2.tar.gz
-sudo rm v1.8.2.tar.gz
-cd RetroArch-1.8.2
+
+cd && curl -LO 'https://github.com/libretro/RetroArch/archive/v1.8.4.tar.gz' && tar -zxvf v1.8.4.tar.gz
+sudo rm v1.8.4.tar.gz
+cd RetroArch-1.8.4
 CFLAGS='-mfpu=neon -mtune=cortex-a72 -march=armv8-a' ./configure --disable-opengl1 --enable-neon --enable-opengles3 --enable-opengles --enable-udev --disable-videocore
 #CFLAGS="-mfpu=neon" ./configure --disable-videocore --enable-opengl --disable-opengl1 --enable-alsa --enable-udev --disable-opengles --enable-neon
 make -j4
 sudo make install
-cd && sudo rm -R RetroArch-1.8.2/
+cd && sudo rm -R RetroArch-1.8.4/
 
 ##### instalar bios base
 dialog --infobox "... Descargando y Copiando BIOS BASE para retroarch en /home/pi/.config/retroarch/system ..." 30 55 ; sleep 3
@@ -181,8 +179,8 @@ cd && git clone https://github.com/DOCK-PI3/emucops-retroarch-shaders.git
 cd && cp -R emucops-retroarch-shaders/shaders /home/pi/.config/retroarch/
 sudo rm -R /home/pi/emucops-retroarch-shaders/
 
-dialog --infobox "... Descarga de BIOS BASE: correcta ..." 30 55 ; sleep 3
-dialog --infobox "... RetroArch 1.8.1 instalado y configurado correctamente en su rpi4! ..." 30 55 ; sleep 7
+dialog --infobox "... Descarga de CONFIG ,SHADERS Y BIOS BASE: OK ..." 30 55 ; sleep 3
+dialog --infobox "... RetroArch 1.8.4 instalado y configurado correctamente en su rpi4! ..." 30 55 ; sleep 7
 }
 
 #################################################
@@ -220,7 +218,7 @@ sudo apt-get install -y libsfml-dev
 # Crear entorno para compilar
 cd /home/pi && mkdir develop
 # Compilar FFmpeg con soporte mmal (decodificacion de video acelerada por hardware) 
-# en la pi4 no va muy bien, usando x software en su lugar..
+# en la pi4 no va muy bien, usando x DEFECTO software en su lugar..
 cd /home/pi/develop
 git clone --depth 1 git://source.ffmpeg.org/ffmpeg.git
 cd ffmpeg
