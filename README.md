@@ -20,7 +20,7 @@
  
  Si prentende instalar attract 2.6 y retroarch 1.8.1 instale estas como se comenta en la nota anterior.
  
- sudo apt-get install -y git dialog build-essential xinit xinit-dev xterm xorg xorg-dev xorg-server-source
+ sudo apt-get install -y git dialog build-essential xinit xterm xorg xorg-dev xorg-server-source
  
  2) Clonar repo en github:
  
