@@ -4,7 +4,7 @@
  Actualiza el firmware de su RPI4 y le instala la herramienta para 
  buscar actualizaciones del firmware automaticamente en cada inicio,
  activa y desactiva las actualizaciones de firmware automaticas en el inicio,
- instala y deja configurado AttractMode 2.6,RetroArch 1.8.1,ect ....
+ instala y deja configurado AttractMode 2.6,RetroArch 1.8.5,ect ....
  
  Los que solo quieren actualizar el firmware no tienen xq intalar todas las dependencias, pueden ejecutar esto y por ssh:
  
@@ -23,6 +23,7 @@
  sudo apt-get install -y git dialog build-essential xinit xterm xorg xorg-dev xorg-server-source
  
  2) Clonar repo en github:
+ IMPORTANTE NOTA: PUEDE USAR PUTTY X SSH DE AQUI EN ADELANTE ...
  
  git clone https://github.com/DOCK-PI3/RPI4_NOOBs_ICA.git
  
@@ -43,8 +44,6 @@
  
  
 BUENA SUERTE!
-
-![Test Image 1](https://github.com/DOCK-PI3/MasOS-Setup/blob/fkms_rpi4/tools/FELIZ_tenor.gif)
 
 ALGUNAS CAPTURAS SOBRE ESTE SCRIPT:
 
