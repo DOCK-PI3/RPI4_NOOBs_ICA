@@ -1,5 +1,5 @@
 #!/bin/bash
-version=" 1.2.0"
+version=" 1.3.5"
 infobox="${infobox}\n_______________________________________________________\n\n"
 infobox="${infobox}\n EMULOS-TEAM_TOOL creado para ayudar a los noobs .....\n\nRPI4_NOOBs_ICA: Instalador de multiples herramientas y utilidades.....\n"
 infobox="${infobox}\n\n_______________________________________________________\n\n"
@@ -17,7 +17,7 @@ function main_menu() {
             --ok-label OK --cancel-label Exit \
             --menu "Version: $version - Que accion te gustaria realizar?" 25 75 20 \
 			100 "------------- RPI4 INSTALADORES & HERRAMIENTAS --------------" \
-			68 "Rpi4 Instala KODI 18.6"
+			68 "Rpi4 Instala KODI 18.6" \
 			70 "Rpi4 Instala Retroarch 1.8.5" \
 			71 "Rpi4 Retroarch install CORES" \
 			72 "Rpi4 Instala AttractMode - Alternate version X" \
