@@ -12,7 +12,7 @@
  
  # Como usar RPI4 NOOBs ICA #
  
- NOTA: Si pretende instalar attract y retroarch con sus cores... tiene q ejecutar raspi-config ir a opciones avanzadas y en memory split poner 256
+ NOTA: Si pretende instalar attract y retroarch con sus cores... tiene q ejecutar raspi-config ir a opciones avanzadas y en memory split poner 256 y de paso puede activar SSH
  
  
  1) Instalar dependencias: 

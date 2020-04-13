@@ -17,6 +17,7 @@ function main_menu() {
             --ok-label OK --cancel-label Exit \
             --menu "Version: $version - Que accion te gustaria realizar?" 25 75 20 \
 			100 "------------- RPI4 INSTALADORES & HERRAMIENTAS --------------" \
+			68 "Rpi4 Instala KODI 18.6"
 			70 "Rpi4 Instala Retroarch 1.8.5" \
 			71 "Rpi4 Retroarch install CORES" \
 			72 "Rpi4 Instala AttractMode - Alternate version X" \
@@ -34,7 +35,8 @@ function main_menu() {
 			2>&1 > /dev/tty)
 
         case "$choice" in
-			100) separador_menu  ;;
+			100) separador_menu ;;
+			68) INSTALAR_KODI ;;
 			69) EMULOS-TEAM_TOOL_update ;;
 			70) RPI4_retroarch_instalador ;;
 			71) RPI4_retroarch_install_cores ;;
@@ -53,6 +55,14 @@ function main_menu() {
 
 function separador_menu() {                                          
 dialog --infobox "... Separador para el menu, sin funcion ..." 30 55 ; sleep 2
+}
+
+function INSTALAR_KODI() {
+dialog --infobox "... Instala kodi con soporte para su joystick o mando tv..." 30 55 ; sleep 3
+sudo apt-get install -y autoconf bison build-essential curl default-jdk gawk gperf libcurl4-openssl-dev zlib1g-dev
+sudo apt-get install -y kodi kodi-peripheral-joystick kodi-game-libretro
+dialog --infobox "... Kodi se instalo correctamente, genere el gamelist en su emulator si instala attract! ..." 30 55 ; sleep 3
+
 }
 
 # function RPI4_samba_install() {                                          
@@ -153,6 +163,7 @@ sudo dpkg-reconfigure tzdata
 dialog --infobox "... Compilar e instalar RetroArch ,iniciando espere! ..." 30 55 ; sleep 5
 
 sudo apt-get install -y build-essential libasound2-dev libudev-dev libxkbcommon-dev zlib1g-dev libfreetype6-dev libegl1-mesa-dev libgles2-mesa-dev libgbm-dev libavcodec-dev libsdl2-dev libsdl-image1.2-dev libxml2-dev yasm libavformat-dev libavdevice-dev libswresample-dev libavresample-dev libswscale-dev libv4l-dev libgl*-mesa-dev
+sudo apt-get install -y xcb libxcb-xkb-dev x11-xkb-utils libx11-xcb-dev libxkbcommon-x11-dev
 
 cd && curl -LO 'https://github.com/libretro/RetroArch/archive/v1.8.5.tar.gz' && tar -zxvf v1.8.5.tar.gz
 sudo rm v1.8.5.tar.gz
@@ -186,13 +197,6 @@ dialog --infobox "... RetroArch 1.8.5 instalado y configurado correctamente en s
 #################################################
 function RPI4_attractmode_instalador() {                                          
 dialog --infobox "... RPI4 Script instalador de AttractMode en su version mas reciente ..." 30 55 ; sleep 3
-# Cierra ES para una mejor y mas rapida compilacion de attract y ffmpeg......
-# sudo killall emulationstation
-# sudo killall emulationstation-dev
-
-# ACTUALIZAR LISTA DE PAQUETES
-sudo apt-get update
-
 #  libjpeg8-dev - prueba change to libjpeg-dev
 # Instalar las dependencias para "sfml-pi" y Attract-Mode ### git-core comment...
 sudo apt-get install -y git cmake make pkg-config libraspberrypi-dev libavformat-dev libavfilter-dev libswscale-dev libavresample-dev libavutil-dev libjpeg-dev libavcodec-dev libflac-dev libogg-dev libvorbis-dev libopenal-dev libfreetype6-dev libudev-dev libfontconfig1-dev
@@ -253,6 +257,7 @@ sudo rm -R /home/pi/EmuCOPS-Attract-autoconf
 sudo chown -R pi:pi /usr/local/bin/attract
 sudo chown -R pi:pi /usr/local/share/attract/
 sudo chown -R pi:pi /home/pi/.attract/
+sudo chmod +x /home/pi/EmulOS/roms/kodi/Kodi.sh
 
 ##### instalar theme AM-EMUCOPS-HD 16:9 1280X720 
 cd && git clone https://github.com/DOCK-PI3/am-theme-EmuCOPS-HD.git
