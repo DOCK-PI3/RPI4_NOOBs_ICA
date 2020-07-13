@@ -4,7 +4,7 @@
  Actualiza el firmware de su RPI4 y le instala la herramienta para 
  buscar actualizaciones del firmware automaticamente en cada inicio,
  activa y desactiva las actualizaciones de firmware automaticas en el inicio,
- instala y deja configurado AttractMode 2.6,RetroArch 1.8.5,ect ....
+ instala y deja configurado AttractMode 2.6,RetroArch 1.8.9,ect ....
  
  Los que solo quieren actualizar el firmware no tienen xq intalar todas las dependencias, pueden ejecutar esto y por ssh:
  
@@ -16,9 +16,9 @@
  
  
  1) Instalar dependencias: 
- IMPORTANTE NOTA: Ejecute esta instalacion de dependencias desde la misma raspberry pi4 y NO por SSH ,recuerde que si solo quiere actualizar instale simplemente estas dependencias: sudo apt-get install -y git dialog build-essential
+ IMPORTANTE NOTA: Recuerde que si solo quiere actualizar instale simplemente estas dependencias: sudo apt-get install -y git dialog build-essential
  
- Si prentende instalar attract 2.6 y retroarch 1.8.1 instale estas como se comenta en la nota anterior.
+ Si prentende instalar attract 2.6 y retroarch 1.8.9 instale estas como se comenta en la nota anterior.
  
  sudo apt-get install -y git dialog build-essential xinit xterm xorg xorg-dev xorg-server-source
  

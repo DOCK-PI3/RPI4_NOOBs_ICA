@@ -265,10 +265,6 @@ cd && mkdir /home/pi/.attract/layouts/EmuCOPS-HD
 cd && cp -R am-theme-EmuCOPS-HD/* /home/pi/.attract/layouts/EmuCOPS-HD/
 sudo rm -R /home/pi/am-theme-EmuCOPS-HD/
 
-dialog --infobox "... CREANDO INICIO DE ATTRACT AUTO EN CLI - CONSOLA ..." 30 55 ; sleep 5
-cd && cp .bashrc .bashrc_back
-cd && sudo cp RPI4_NOOBs_ICA/configs/rpi4/.bashrc /home/pi/
-sudo chown -R pi:pi /home/pi/.bashrc
 dialog --infobox " ...Attractmode instalado y con inicio automatico... " 350 350 ; sleep 10
 }
 
