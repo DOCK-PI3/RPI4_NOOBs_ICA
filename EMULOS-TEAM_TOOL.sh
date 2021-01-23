@@ -17,6 +17,7 @@ function main_menu() {
             --ok-label OK --cancel-label Exit \
             --menu "Version: $version - Que accion te gustaria realizar?" 25 75 20 \
 			100 "------------- RPI4 INSTALADORES & HERRAMIENTAS --------------" \
+			67 "Rpi4 Instala RETROFE 0.10" \
 			68 "Rpi4 Instala KODI 18.6" \
 			70 "Rpi4 Instala Retroarch 1.9.0" \
 			71 "Rpi4 Retroarch install CORES" \
@@ -36,6 +37,7 @@ function main_menu() {
 
         case "$choice" in
 			100) separador_menu ;;
+			67) INSTALAR_RETROFE ;;
 			68) INSTALAR_KODI ;;
 			69) EMULOS-TEAM_TOOL_update ;;
 			70) RPI4_retroarch_instalador ;;
@@ -67,7 +69,7 @@ dialog --infobox "... Kodi se instalo correctamente, genere el gamelist en su em
 
 function INSTALAR_RETROFE() {
 dialog --infobox "... Instala RetroFE con soporte para su joystick mas config base" 30 55 ; sleep 3
-sudo apt-get install -y autoconf bison build-essential curl default-jdk gawk gperf libcurl4-openssl-dev zlib1g-dev
+# sudo apt-get install -y autoconf bison build-essential curl default-jdk gawk gperf libcurl4-openssl-dev zlib1g-dev
 
 # --------------------------------------------------------
 # Installs RetroFE and SDL2 from source on the Raspberry Pi 2 (Raspbian)
