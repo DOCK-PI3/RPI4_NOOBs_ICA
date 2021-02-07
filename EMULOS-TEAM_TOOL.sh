@@ -230,7 +230,7 @@ git clone --depth 1 git://source.ffmpeg.org/ffmpeg.git
 cd ffmpeg
 ./configure --enable-mmal --disable-debug --enable-shared
 make -j4
-sudo make -j4 install
+sudo make install
 sudo ldconfig
 
 # Descargar y compilar Attract-Mode
