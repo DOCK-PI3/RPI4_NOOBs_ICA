@@ -1,9 +1,9 @@
 #!/bin/bash
-version=" 1.3.5"
+version=" 1.5.5"
 infobox="${infobox}\n_______________________________________________________\n\n"
 infobox="${infobox}\n EMULOS-TEAM_TOOL creado para ayudar a los noobs .....\n\nRPI4_NOOBs_ICA: Instalador de multiples herramientas y utilidades.....\n"
 infobox="${infobox}\n\n_______________________________________________________\n\n"
-infobox="${infobox}\n De momento tenemos para instalar:\n\nAttractMode 2.6\n\nRetroArch 1.9.0\n\nHerramienta para actualizar el firmware de nuestra RPI4."
+infobox="${infobox}\n De momento tenemos para instalar:\n\nAttractMode 2.6\n\nRetroArch 1.9.11\n\nHerramienta para actualizar el firmware de nuestra RPI4."
 infobox="${infobox}\n\n\n_______________________________________________________\n\n"
 dialog --backtitle "Version de la aplicacion: $version - Multi-instalador de Herramientas y utils" \
 --title "Instalador de sistemas y utilidades rpi 4b (by EmulOS TEAM)" \
@@ -18,7 +18,7 @@ function main_menu() {
             --menu "Version: $version - Que accion te gustaria realizar?" 25 75 20 \
 			100 "------------- RPI4 INSTALADORES & HERRAMIENTAS --------------" \
 			68 "Rpi4 Instala KODI 18.6" \
-			70 "Rpi4 Instala Retroarch 1.9.0" \
+			70 "Rpi4 Instala Retroarch 1.9.11" \
 			71 "Rpi4 Retroarch install CORES" \
 			72 "Rpi4 Instala AttractMode - Alternate version X" \
 			73 "Rpi4 Instalar herramienta y actualiza el firmware de tu rpi4" \
@@ -36,7 +36,6 @@ function main_menu() {
 
         case "$choice" in
 			100) separador_menu ;;
-			# 67) INSTALAR_RETROFE ;;
 			68) INSTALAR_KODI ;;
 			69) EMULOS-TEAM_TOOL_update ;;
 			70) RPI4_retroarch_instalador ;;
@@ -65,7 +64,6 @@ sudo apt-get install -y kodi kodi-peripheral-joystick kodi-game-libretro
 dialog --infobox "... Kodi se instalo correctamente, genere el gamelist en su emulator si instala attract! ..." 30 55 ; sleep 3
 
 }
-
 
 # function RPI4_samba_install() {                                          
 # dialog --infobox "... Instalando samba ..." 30 55 ; sleep 3
@@ -152,7 +150,7 @@ exit
 # }
 
 function RPI4_retroarch_instalador() {                                          
-dialog --infobox "... RIP4 BETA Script instalador de Retroarch en su version 1.9.0 ..." 30 55 ; sleep 5
+dialog --infobox "... RIP4 BETA Script instalador de Retroarch en su version 1.9.11 ..." 30 55 ; sleep 5
 sudo apt-get update
 dialog --infobox "... Iniciando actualizacion del sistema y sus paquetes ,espere... ..." 30 55 ; sleep 5
 sudo apt-get upgrade -y
@@ -167,14 +165,14 @@ dialog --infobox "... Compilar e instalar RetroArch ,iniciando espere! ..." 30 5
 sudo apt-get install -y build-essential libasound2-dev libudev-dev libxkbcommon-dev zlib1g-dev libfreetype6-dev libegl1-mesa-dev libgles2-mesa-dev libgbm-dev libavcodec-dev libsdl2-dev libsdl-image1.2-dev libxml2-dev yasm libavformat-dev libavdevice-dev libswresample-dev libavresample-dev libswscale-dev libv4l-dev libgl*-mesa-dev
 sudo apt-get install -y xcb libxcb-xkb-dev x11-xkb-utils libx11-xcb-dev libxkbcommon-x11-dev
 
-cd && curl -LO 'https://github.com/libretro/RetroArch/archive/v1.9.0.tar.gz' && tar -zxvf v1.9.0.tar.gz
-sudo rm v1.9.0.tar.gz
-cd RetroArch-1.9.0
-CFLAGS='-mfpu=neon -mtune=cortex-a72 -march=armv8-a' ./configure --disable-opengl1 --enable-neon --enable-opengles3 --enable-opengles --enable-udev --disable-videocore
+cd && curl -LO 'https://github.com/libretro/RetroArch/archive/refs/tags/v1.9.11.tar.gz' && tar -zxvf v1.9.11.tar.gz
+sudo rm v1.9.11.tar.gz
+cd RetroArch-1.9.11
+CFLAGS='-mfpu=neon -mtune=cortex-a72 -march=armv8-a' ./configure --disable-opengl1 --enable-neon --enable-opengles3 --enable-opengles --enable-udev --disable-videocore --enable-kms --enable-egl
 #CFLAGS="-mfpu=neon" ./configure --disable-videocore --enable-opengl --disable-opengl1 --enable-alsa --enable-udev --disable-opengles --enable-neon
 make -j4
 sudo make install
-cd && sudo rm -R RetroArch-1.9.0/
+cd && sudo rm -R RetroArch-1.9.11/
 
 ##### instalar bios base
 dialog --infobox "... Descargando y Copiando BIOS BASE para retroarch en /home/pi/.config/retroarch/system ..." 30 55 ; sleep 3
@@ -193,7 +191,7 @@ cd && cp -R emucops-retroarch-shaders/shaders /home/pi/.config/retroarch/
 sudo rm -R /home/pi/emucops-retroarch-shaders/
 
 dialog --infobox "... Descarga de CONFIG ,SHADERS Y BIOS BASE: OK ..." 30 55 ; sleep 3
-dialog --infobox "... RetroArch 1.9.0 instalado y configurado correctamente en su rpi4! ..." 30 55 ; sleep 7
+dialog --infobox "... RetroArch 1.9.11 instalado y configurado correctamente en su rpi4! ..." 30 55 ; sleep 7
 }
 
 #################################################
@@ -230,7 +228,7 @@ git clone --depth 1 git://source.ffmpeg.org/ffmpeg.git
 cd ffmpeg
 ./configure --enable-mmal --disable-debug --enable-shared
 make -j4
-sudo make install
+sudo make -j4 install
 sudo ldconfig
 
 # Descargar y compilar Attract-Mode
@@ -267,6 +265,10 @@ cd && mkdir /home/pi/.attract/layouts/EmuCOPS-HD
 cd && cp -R am-theme-EmuCOPS-HD/* /home/pi/.attract/layouts/EmuCOPS-HD/
 sudo rm -R /home/pi/am-theme-EmuCOPS-HD/
 
+dialog --infobox "... CREANDO INICIO DE ATTRACT AUTO EN CLI - CONSOLA ..." 30 55 ; sleep 5
+cd && cp .bashrc .bashrc_back
+cd && sudo cp RPI4_NOOBs_ICA/configs/rpi4/.bashrc /home/pi/
+sudo chown -R pi:pi /home/pi/.bashrc
 dialog --infobox " ...Attractmode instalado y con inicio automatico... " 350 350 ; sleep 10
 }
 
